@@ -21,7 +21,7 @@ jobs:
             docker push quay.io/appvia_hub_dev/test-app:$CIRCLE_SHA1
             docker push quay.io/appvia_hub_dev/test-app:latest
 
-workflow:
+workflows:
   version: 2
   jobs:
     - test

@@ -2,10 +2,20 @@ version: 2
 jobs:
   test:
     docker:
-      - image: cirlceci/node:10.15.3
+      - image: node:10
+    workding_directory: ~/repo
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
       - run: npm test
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
   build_and_push_latest:
     machine: true

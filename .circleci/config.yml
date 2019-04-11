@@ -26,10 +26,10 @@ jobs:
           name: Build image and push to Quay with tag latest
           command: |
             docker login quay.io --username $QUAY_USERNAME --password $QUAY_PASSWORD
-            docker build -t quay.io/appvia_hub_dev/test-app:$CIRCLE_SHA1 .
-            docker tag quay.io/appvia_hub_dev/test-app:$CIRCLE_SHA1 quay.io/appvia_hub_dev/test-app:latest
-            docker push quay.io/appvia_hub_dev/test-app:$CIRCLE_SHA1
-            docker push quay.io/appvia_hub_dev/test-app:latest
+            docker build -t quay.io/appvia_hub_dev/test-1:$CIRCLE_SHA1 .
+            docker tag quay.io/appvia_hub_dev/test-1:$CIRCLE_SHA1 quay.io/appvia_hub_dev/test-1:latest
+            docker push quay.io/appvia_hub_dev/test-1:$CIRCLE_SHA1
+            docker push quay.io/appvia_hub_dev/test-1:latest
 
 workflows:
   version: 2

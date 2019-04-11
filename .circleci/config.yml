@@ -23,15 +23,16 @@ jobs:
 
 workflows:
   version: 2
-  jobs:
-    - test
-    - build_and_push_latest:
-      requires:
-        - test
-      filters:
-        branches:
-          only:
-            - master
-        tags:
-          ignore: /.*/
+  main:
+    jobs:
+      - test
+      - build_and_push_latest:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              ignore: /.*/
 

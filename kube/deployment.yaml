@@ -4,11 +4,14 @@ kind: Deployment
 metadata:
   name: hello-world
 spec:
+  selector:
+    matchLabels:
+      run: hello-world
   replicas: 1
   template:
     metadata:
       labels:
-        name: hello-world
+        run: hello-world
     spec:
       containers:
       - name: hello-world-nodejs

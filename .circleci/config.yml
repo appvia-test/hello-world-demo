@@ -38,16 +38,14 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: Set kubernetes env
+          name: Set Env and Deploy
           command: |
             kubectl config --kubeconfig=config-demo set-cluster appvia-demo --server=$KUBE_API_SERVER
             kubectl config set clusters.appvia-demo.certificate-authority-data $KUBE_CERT_DATA
             kubectl config set-credentials demo-user --token=$KUBE_TOKEN
             kubectl config set-context appvia-demo --cluster=appvia-demo --user=demo-user
-      - run:
-          command: |
             kd --context=appvia-demo --namespace=$KUBE_NAMESPACE -f kube/service.yaml
-            kd --context=appvia-demo --namespace=$KUBE_NAMESPACE -f kube/deployment.yamll
+            kd --context=appvia-demo --namespace=$KUBE_NAMESPACE -f kube/service.yaml
 
 workflows:
   version: 2

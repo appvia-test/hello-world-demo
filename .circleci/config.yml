@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Set Env and Deploy
           command: |
-            kubectl config --kubeconfig=config-demo set-cluster appvia-demo --server=$KUBE_API_SERVER
+            kubectl config set-cluster appvia-demo --server=$KUBE_API_SERVER
             kubectl config set clusters.appvia-demo.certificate-authority-data $KUBE_CERT_DATA
             kubectl config set-credentials demo-user --token=$KUBE_TOKEN
             kubectl config set-context appvia-demo --cluster=appvia-demo --user=demo-user
